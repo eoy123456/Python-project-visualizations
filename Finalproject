@@ -32,9 +32,8 @@ dropdown_options = [
 year_list = [i for i in range(1980, 2024, 1)]
 #---------------------------------------------------------------------------------------
 # Create the layout of the app
-app.layout = html.Div(
+app.layout = html.Div([
     #TASK 2.1 Add title to the dashboard
-    children=[
         html.H1("Automobile Sales Statistics Dashboard", style = {'textAlign': 'center', 'color': '#503D36', 'font-size': 24}),#May include style for title
         html.Div([#TASK 2.2: Add two dropdown menus
             html.Label("Select Statistics:"),
@@ -46,7 +45,7 @@ app.layout = html.Div(
                     style={'width': '80%', 'padding': '3px', 'font-size': '20px', 'text-align-last': 'center'}
                     )
                 ]),
-        html.Div([html.Label("Select Year:"),
+        html.Div([
             dcc.Dropdown(
                 id='select-year',
                 options=[{'label': i, 'value': i} for i in year_list],
@@ -115,7 +114,7 @@ def update_output_container(selected_statistics, input_year):
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
  # Yearly Statistic Report Plots                             
-    elif (input_year and selected_statistics=='Yearly_Statistics') :
+    elif (input_year and selected_statistics=='Yearly Statistics') :
         print(input_year)
         yearly_data = data[data['Year'] == input_year]
                               
